@@ -1,14 +1,14 @@
-var json = require('rollup-plugin-json');
-var babel = require('rollup-plugin-babel');
-var minify = require('rollup-plugin-babel-minify');
+let json = require('rollup-plugin-json');
+let minify = require('rollup-plugin-babel-minify');
+let typescript = require('rollup-plugin-typescript');
 
-var ENV = process.env.NODE_ENV;
+let ENV = process.env.NODE_ENV;
 
-var config = {
-  input: 'src/index.js',
+let config = {
+  input: 'src/index.ts',
   plugins: [
     json(),
-    babel()
+    typescript()
   ],
   output: {
     file: 'bundle.js',
