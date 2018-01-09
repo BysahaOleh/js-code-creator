@@ -1,5 +1,5 @@
-import createTemplate from './base/createTemplate'
+import createObjectFile from './core/createObjectFile'
 
 export {
-  createTemplate
+	createObjectFile
 }
