@@ -11,7 +11,7 @@ let config = {
     typescript()
   ],
   output: {
-    file: 'bundle.js',
+    file: 'index.js',
     format: 'cjs'
   }
 };
