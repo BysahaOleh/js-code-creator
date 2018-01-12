@@ -31,6 +31,22 @@ declare namespace Module {
     }
   }
 
+  namespace CreateObjectFile {
+  	interface API {
+			getString(): string
+			createImport(path: string, variable: string | string[], variable2?: string | string[]),
+			createRequire(path: string, variable: string)
+			createConst(field: Field, name: string, value: string)
+			createLet(field: Field, name: string, value: string)
+			createVar(field: Field, name: string, value: string)
+			createAnonymousArrowFunction(filed: Field, params: string | string[])
+			createAnonymousFunction(filed: Field, params: string | string[])
+			createArrowFunction(filed: Field, name: string, params: string | string[])
+			createFunction(filed: Field, name: string, params: string | string[])
+			createFunctionRun(filed: Field, name: string, params?: string | string[])
+		}
+	}
+
   namespace Import {
 		enum Type  {
 			import = 'import',
@@ -56,11 +72,7 @@ declare namespace Module {
   }
 
   namespace Variable {
-  	enum Type {
-  		let = 'let',
-			const = 'const',
-			var = 'var'
-		}
+  	type Type = 'let' | 'var' | 'const'
 
 		interface Source {
   		type: Type
@@ -70,12 +82,7 @@ declare namespace Module {
 	}
 
 	namespace Function {
-		enum Type {
-  		function = 'function',
-			anonymous = 'anonymous',
-			arrow = 'arrow',
-			anonymousArrow = 'anonymous-arrow'
-		}
+		type Type  = 'function' | 'anonymous' | 'arrow' | 'anonymous-arrow' | 'run-function'
 
 		interface Source {
   		type: Type
