@@ -1,8 +1,8 @@
-export const createVar = createVariable.bind(null, 'var')
-export const createLet = createVariable.bind(null, 'let')
-export const createConst = createVariable.bind(null, 'const')
+export let createVar = createVariable.bind(null, 'var')
+export let createLet = createVariable.bind(null, 'let')
+export let createConst = createVariable.bind(null, 'const')
 
-function createVariable(type: Module.Variable,
+function createVariable(type: Module.Variable.Type,
 												storage: Module.Template.Storage,
 												field: Module.Field,
 												name: string,

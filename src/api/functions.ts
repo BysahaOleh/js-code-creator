@@ -33,7 +33,19 @@ function FunctionAPI(storage: Module.Template.Storage,
 	}
 }
 
-export const createFunction = generateFunction.bind('function')
-export const createAnonymousFunction = generateAnonymous.bind('anonymous')
-export const createArrowFunction = generateFunction.bind('arrow')
-export const createAnonymousArrowFunction = generateAnonymous.bind('anonymous-arrow')
+export const createFunction = generateFunction.bind(null,'function')
+export const createAnonymousFunction = generateAnonymous.bind(null,'anonymous')
+export const createArrowFunction = generateFunction.bind(null,'arrow')
+export const createAnonymousArrowFunction = generateAnonymous.bind(null,'anonymous-arrow')
+
+export function createFunctionRun(storage: Module.Template.Storage,
+																	field: Module.Field,
+																	name: string,
+																	params?: string | string[]): number {
+	return storage.push(field, {
+		type: 'run-function',
+		name,
+		params
+	})
+}
+

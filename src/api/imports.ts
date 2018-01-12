@@ -1,4 +1,4 @@
-import {isArray} from 'lodash'
+import {isArray} from "lodash"
 
 type Variables = string | string[]
 
@@ -45,20 +45,3 @@ export function createRequire(storage: Module.Template.Storage, path: string, va
 
 	return config
 }
-
-/*export function addImport(template: Module.Template.Source, variable: string | string[], path: string) :string{
-  let srt
-  if(typeof variable === 'string') {
-    srt = `imports ${variable} from '${path}'`
-  } else {
-    srt = `imports {${variable.join(', ')}} from '${path}'`
-  }
-  template['imports'].push(srt)
-  return srt
-}
-
-export function addRequire(template: Module.Template.Source, variable: string, path:string) {
-  const srt = `const ${variable} = require('${path}')`
-  template['imports'].push(srt)
-  return srt
-}*/
