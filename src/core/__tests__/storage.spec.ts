@@ -129,6 +129,42 @@ describe('Storage', () => {
 			expect(store.getById('center', 20)).toBeNull()
 		})
 
+		it('should set import', () => {
+			store.pushImport({
+				type: 'import',
+				variable: 'React',
+				path: 'react'
+			})
+
+			expect(store.getById('imports', 'react')).toEqual({
+				type: 'import',
+				variable: 'React',
+				path: 'react'
+			})
+		})
+
+		it('should correct set same imports', () => {
+			store.pushImport({
+				type: 'import',
+				variable: 'React',
+				path: 'react'
+			})
+
+			store.pushImport({
+				type: 'import',
+				variable: 'React',
+				variables: ['Component'],
+				path: 'react'
+			})
+
+			expect(store.getById('imports', 'react')).toEqual({
+				type: 'import',
+				variable: 'React',
+				variables: ['Component'],
+				path: 'react'
+			})
+		})
+
 	})
 
 
