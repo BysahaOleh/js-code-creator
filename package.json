@@ -1,6 +1,6 @@
 {
   "name": "js-code-creator",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Library for code generator",
   "main": "index.js",
   "scripts": {
@@ -43,7 +43,7 @@
     "collectCoverage": true,
     "mapCoverage": true
   },
-  "types": "src/types/index.d.ts",
+  "types": "index.d.ts",
   "homepage": "https://github.com/BysahaOleh/js-code-generator#readme",
   "dependencies": {
     "@types/jest": "^22.0.0",

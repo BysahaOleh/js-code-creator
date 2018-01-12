@@ -1,8 +1,8 @@
 let json = require('rollup-plugin-json');
-let minify = require('rollup-plugin-babel-minify');
+//let minify = require('rollup-plugin-babel-minify');
 let typescript = require('rollup-plugin-typescript');
 
-let ENV = process.env.NODE_ENV;
+//let ENV = process.env.NODE_ENV;
 
 let config = {
   input: 'src/index.ts',
@@ -16,6 +16,6 @@ let config = {
   }
 };
 
-if(ENV === 'production') config.plugins.push(minify({ comments: false, sourceMap: false }))
+//if(ENV === 'production') config.plugins.push(minify({ comments: false, sourceMap: false }))
 
 module.exports = config
