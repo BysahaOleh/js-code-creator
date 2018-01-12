@@ -1,15 +1,17 @@
-import {js} from 'js-beautify'
+const bf = require('js-beautify')
 import {mapField, mapImports} from '../helpers/parser'
 
-export default function(fileObject: Module.Template.InitSource) {
+export default function(fileObject: Module.Template.Storage) {
+	const store = fileObject.getStore()
+
 	let file = {
-		imports: mapImports(fileObject.imports).join(''),
-		top: mapField(fileObject.top).join(''),
-		center: mapField(fileObject.center).join(''),
-		bottom: mapField(fileObject.bottom).join('')
+		imports: mapImports(store.imports).join(''),
+		top: mapField(store.top).join(''),
+		center: mapField(store.center).join(''),
+		bottom: mapField(store.bottom).join('')
 	}
 
-	return js(file.imports + file.top + file.center + file.bottom, {
+	return bf.js_beautify(file.imports + file.top + file.center + file.bottom, {
 		indent_size: 2,
 		e4x: true
 	})

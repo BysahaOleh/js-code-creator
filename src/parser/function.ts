@@ -1,20 +1,21 @@
-import {isArray} from 'lodash'
-
-export function functionParse({type, params, source, name}: Module.Function.Source) {
-	let parameters = params ? isArray(params) ? params.join(', ') : params : ''
+export function functionParse({type, params, source, name}: Module.Function.Source): string {
+	let parameters = params ? typeof params !== 'string' ? params.join(', ') : params : ''
 	let body = source ? '' : '' //ToDo: Run parser
 
 	switch(type) {
-		case Module.Function.Type.function:
-			return `function ${name} (${parameters}) {${body}}`
+		case 'function':
+			return `function ${name}(${parameters}) {${body}}`
 
-		case Module.Function.Type.anonymous:
+		case 'anonymous':
 			return `function (${parameters}) {${body}}`
 
-		case Module.Function.Type.arrow:
-			return `${name}(${parameters}) => {${body}}`
+		case 'arrow':
+			return `const ${name} = (${parameters}) => {${body}}`
 
-		case Module.Function.Type.anonymousArrow:
-			return `(${parameters}) => (${body})`
+		case 'anonymous-arrow':
+			return `(${parameters}) => {${body}}`
+
+		case 'run-function':
+			return `${name}(${parameters});` //ToDo: Create functionality for use few call
 	}
 }

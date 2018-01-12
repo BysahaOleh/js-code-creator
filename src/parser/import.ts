@@ -1,9 +1,10 @@
-export function importParser({type, variables, variable, path}: Module.Import.Source) {
+export function importParser({type, variables, variable, path}: Module.Import.Source): string {
 	switch (type) {
-		case Module.Import.Type.import:
-			const addition = variables.length ? `, {${variables.join(',')}}` : ''
-			return `import ${variable}${addition} from '${path};'`
-		case Module.Import.Type.require:
-			return `const ${variable} = require('${path}');`
+		case 'import':
+			const separator = variable && (variables && variables.length) ? ', ' : ''
+			const addition = variables ? variables.length ? `{${variables.join(',')}}` : '' : ''
+			return `import ${variable ? variable : ''}${separator}${addition} from '${path}';`
+		case 'require':
+			return `const ${variable ? variable : ''} = require('${path}');`
 	}
 }
