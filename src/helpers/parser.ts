@@ -8,17 +8,18 @@ export function mapImports(imports) {
 	})
 }
 
-export function mapField(field: Module.SourcesType[]) {
+export function mapField(field: Module.SourcesType[]): string[] {
 	return field.map((dependence) => {
 		switch(dependence.type) {
-			case Module.Function.Type.function:
-			case Module.Function.Type.arrow:
-			case Module.Function.Type.anonymous:
-			case Module.Function.Type.anonymousArrow:
+			case 'function':
+			case 'arrow':
+			case 'anonymous':
+			case 'anonymous-arrow':
+			case 'run-function':
 				return functionParse(dependence)
-			case Module.Variable.Type.var:
-			case Module.Variable.Type.let:
-			case Module.Variable.Type.const:
+			case 'var':
+			case 'let':
+			case 'const':
 				return variableParser(dependence)
 		}
 	})
